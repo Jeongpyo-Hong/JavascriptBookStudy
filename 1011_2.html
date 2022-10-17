@@ -1,0 +1,35 @@
+<!-- 글자 수 출력하기 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const h1 = document.querySelector("h1");
+      const textarea = document.querySelector("textarea");
+      let timerId;
+
+      textarea.addEventListener("focus", (event) => {
+        // 초점을 설정하면 기능 활성화
+        timerId = setInterval(() => {
+          const length = textarea.value.length;
+          h1.textContent = `글자 수: ${length}`;
+        }, 50);
+      });
+
+      textarea.addEventListener("blur", (event) => {
+        // 초점을 해제하면 기능 비활성화
+        clearInterval(timerId);
+      });
+    });
+  </script>
+  <body>
+    <h1></h1>
+    <textarea></textarea>
+  </body>
+</html>
